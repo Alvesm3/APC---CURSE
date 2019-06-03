@@ -1,8 +1,10 @@
+            Waterfall Model
+
 Requirements Definition and Analysis:
 The program is a fully functional student registration system. It should include user members,
-which are the students, instructors, and admins. It should also include courses that can be altered and manipulated.
-Each type of user should have his/her specific privileges: students can only register for courses,
-instructors can manipulate them (and possibly add them), admins can provide overrides and add/ remove courses.
+which are the students, instructors, and one admin. Courses are static, meaning they are already in the system and students must 
+register for the class they desire. Each type of user should have his/her specific privileges: students can only register for courses,
+instructors can view who is in each course, and the admin can provide overrides and add/ remove courses.
 Courses should also automatically interact with the rest of the system by pushing warnings in the case of a schedule conflict.
 
 System and Software Design:
