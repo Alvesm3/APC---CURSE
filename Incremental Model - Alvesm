@@ -1,8 +1,8 @@
 The incremental model looks to start with a basic version or model of a program then evolve it over many iterations. All these iterations are tested and verified until the final desired system is realized. The process will follow the same methodology as the waterfall process except the program is built in pieces and incremented slowly until the final piece has been created and implemented.  
  
- Requirement Analysis → Design → Code → Test → Increment 1 ↓
-          Requirement Analysis → Design → Code → Test → Increment 2 ↓
-                Continue to increment until final product is realized.
+	 Requirement Analysis → Design → Code → Test → Increment 1 ↓
+          	Requirement Analysis → Design → Code → Test → Increment 2 ↓
+               		 Continue to increment until final product is realized.
 	
   The Course registration simulator would benefit greatly from the incremental model because each week the professor will assign a different phase of the system to design and build. Phase 1 or Increment 1 includes creating a class interface for a student and creating a few attributes associated with that class. Eventually, more users such as instructor and admin will need to be implemented. The user will be able to add 3 students and some courses which relate to input and output. After testing of this phase is complete, the next increment can be worked on. 
 
