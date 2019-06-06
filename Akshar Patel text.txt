@@ -1,11 +1,6 @@
 
-	Above is an image of the integrate and configure model taken off the internet. The basic blocks in this model are going 
-  to be the exact same as the ones in the other two models. Rather than explain that again it is easier to understand how this 
-model would be different, and how to use this model to structure the code. It is probably even easier than the incremental 
-model, but the best combination would be a mix of the integrate model, and the incremental model. The reason behind this is
-because the incremental model has a nice gradual increase in design complexity (start off basic and then evolve). The
-integrate model basically says use the internet to find if something like what you are trying to code, and then modify it to
-build your code. In the case of assignment two finding a database for a school may not be that hard. The group could then use
-that database, and throw out what they don’t need form it, and keep what they need. A user interface is just as easy to find.
-The two groups could manipulate already made code, to do their task. This model is more of a strategy that can be implemented
-into other models (this is how I see it *of course you must cite the original work). 
+ The basic blocks in this model are going to be the exact same as the ones in the other two models. Rather than explain that again it is easier to understand how this model would be different, and how to use this model to structure the code. Uisng this model will likely 
+prove to be more efficient than using other models, but the best combination would be a mix of the integrate model, and the incremental model. The reason behind this is because the incremental model has a nice gradual increase in design complexity, start off basic and
+then evolve. The integrate model says to use the internet to integrate existing software and reusable components into one’s own system instead of building it from scratch. In the case of assignment two, one requeirment includes incorporating a databse, and finding a 
+database for a school may not be that hard. One could then use that database, and throw out what they don’t need from it, and keep what they need. A user interface is just as easy to find. The two groups could manipulate already made code and configure it to work in their 
+system. This model is more of a strategy that can be implemented into other models and it is important to cite and give credit to the original creator of the code if integrate and configure is ever used. 
