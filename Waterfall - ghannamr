@@ -1,9 +1,9 @@
 Requirements Definition and Analysis:
   The program is a fully functional student registration system. It should include user members, which are the students,
-instructors, and admins. It should also include courses that can be altered and manipulated. Each type of user should have
-his/her specific privileges: students can only register for courses, instructors can manipulate them (and possibly add them),
-admins can provide overrides and add/ remove courses. Courses should also automatically interact with the rest of the system by
-pushing warnings in the case of a schedule conflict.
+instructors, and one admin. A database of courses will be avaliable to the students, instructors, and admin. Each type of user should have
+his/her specific privileges: students will be able to register for courses, and view their scheduled courses, instructors can view all
+courses and their rosters (and possibly add them), admins can provide overrides and add/ remove courses. Courses should also automatically
+interact with the rest of the system by pushing warnings in the case of a schedule conflict.
 
 System and Software Design:
   User member credentials will be stored in a database. The database will also contain all the courses as well as their information.
@@ -23,6 +23,7 @@ simulation of the expected usage of the program. For example, log a hundred user
 test the ability of the program to deal with different successive functions.
 
 Operation and maintenance:
-  Launch the system to the public. Get feedback on existing bugs/ glitches and work on issuing patches.
-Keep track of new consumer requirements (such as friendlier changes to the UI, etc.) and implement new features
-to appease the demands and keep the service alive.
+  Launch the system to a group of quality assurance engineers. Have them debug it and extensively test it. In our case, hand the code 
+over to another group so they can test our code and see how it functions. Lasltly, launch the system to the public. Get feedback 
+on existing bugs/ glitches and work on issuing patches.Keep track of new consumer requirements (such as friendlier changes to the UI,
+etc.) and implement new features to appease the demands and keep the service alive.
