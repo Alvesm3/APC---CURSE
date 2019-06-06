@@ -1,12 +1,12 @@
 Requirements Definition and Analysis:
-The program is a fully functional student registration system. It should include user members, which are the students,
+  The program is a fully functional student registration system. It should include user members, which are the students,
 instructors, and admins. It should also include courses that can be altered and manipulated. Each type of user should have
 his/her specific privileges: students can only register for courses, instructors can manipulate them (and possibly add them),
 admins can provide overrides and add/ remove courses. Courses should also automatically interact with the rest of the system by
 pushing warnings in the case of a schedule conflict.
 
 System and Software Design:
-User member credentials will be stored in a database. The database will also contain all the courses as well as their information.
+  User member credentials will be stored in a database. The database will also contain all the courses as well as their information.
 As a first step, the program should ask the user to log in using his credentials, then initialize the user’s data along with all the
 information that could potentially be of use. The program should then identify the user as well as his privileges
 and grant him access to his features. Classes will be needed for users, which can then be derived as admins, students,
@@ -14,15 +14,15 @@ and instructors, as well as for the courses. Functions will be built for every u
 while the functions implemented for the courses class will be universal.
 
 Implementation and Unit Testing:
-The user classes and the course classes will be implemented and tested separately. The final step would be
+  The user classes and the course classes will be implemented and tested separately. The final step would be
 to design a main framework to run the program.
 
 Integration and System Testing:
-Put the entire program together when the framework is complete, then test the entire program using a realistic
+  Put the entire program together when the framework is complete, then test the entire program using a realistic
 simulation of the expected usage of the program. For example, log a hundred users and courses in a database and
 test the ability of the program to deal with different successive functions.
 
 Operation and maintenance:
-Launch the system to the public. Get feedback on existing bugs/ glitches and work on issuing patches.
+  Launch the system to the public. Get feedback on existing bugs/ glitches and work on issuing patches.
 Keep track of new consumer requirements (such as friendlier changes to the UI, etc.) and implement new features
 to appease the demands and keep the service alive.
