@@ -8,13 +8,17 @@ incremented slowly until the final piece has been created and implemented.
 		Requirement Analysis → Design → Code → Test → Increment 1 ↓
 				Requirement Analysis → Design → Code → Test → Increment 2 ↓
 						Continue to increment until final product is realized.
-
+						
 	The Course registration simulator would benefit greatly from the incremental model because each week the 
-professor will assign a different phase of the system to design and build. Phase 1 or Increment 1 includes creating
-a class interface for a student and creating a few attributes associated with that class. Eventually, more users
-such as instructor and admin will need to be implemented. The user will be able to add 3 students and some courses
-which relate to input and output. After testing of this phase is complete, the next increment can be worked on.
+professor will assign a different phase of the system to design and build. The program will go through the following versions:
+	
+	Version 1:
+	Phase 1 or Increment 1 includes creating a class interface for a student and creating a few attributes
+associated with that class. Eventually, more users such as instructor and admin will need to be implemented. 
+The user will be able to add 3 students and some courses which relate to input and output. After testing of 
+this phase is complete, the next increment can be worked on.
 
+	Version 2:
 	The next phase can be dedicated to creating the other, “classes,” of users as this is a requirement of the 
 program. Class instructor and class admin need to be incorporated in the code. Whether or not those classes are related
 to student or will inherit any features from student needs to be addressed in the design part of this phase. 
@@ -22,17 +26,20 @@ Instructors will need to be able to view who is in their courses and the availab
 be able to see all the courses available to them and once they have successfully registered for all their courses, 
 be able to view their schedule.
 
+	Version 3:
 	The third phase can look to implement the database of students, and instructors. Looking ahead it would make
 sense to have a set of instructors dedicated and registered already for certain courses. Then the program will allow
 up to 100 students to register for different courses which are associated with different instructors. However, it might 
 make more sense to already have a pool of 100 students who are already registered within the system and must simply 
 choose their name from a list or enter their name to continue and register for courses.
 	
+	Version 4:
 	This next phase can look to implement the database of courses which need to be imagined arbitrarily by the user.
 Each course will have a name associated with it, a 6-digit CRN code for registering, the time that it is being held, and 
 the instructor who is teaching it. This an be tested by testing each case and printing it out to the screen to know that 
 it was imported correctly. 
 
+	Version 5:
 	The next phase can look to link students and courses, which is the major feature of the application, being able 
 to register for courses a student desires. A list of courses would be presented to the student with its respective attributes
 and the student would then be able to enter up to five different 6-digit CRN numbers as there is a limit on the number of
@@ -40,6 +47,7 @@ courses a student will be able to take and the program will store that informati
 accessible by the instructor so that they may see who is inwhat course, the student will have access only to their schedule,
 and of course the admin will have access to this database as they have access to everything. 
 
+	Version 6:
 	The next phase can look to implement the features of the admin who is much more complex compared to the student and
 instructor as the admin will have complete access over the entire program. The design phase will look to limit the program
 to one admin. Thus, the program must be able to differentiate between all three users, student, instructor, and admin. 
