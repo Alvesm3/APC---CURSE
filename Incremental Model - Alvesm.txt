@@ -49,3 +49,4 @@ An admin will have permission to read, write, and delete.
 and that each phase is being completed in a satisfactory manner. Implementing each phase will be a challenge because 
 incorporating the code can result in merging errors, but analysis and continual testing will be required to realize the 
 full product. Once all the phases have been incorporated, then the application will be tested by other members.
+
