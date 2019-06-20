@@ -1,6 +1,15 @@
+class course:
+
+    def __init__(self, ID, t, d, sch):
+        self.ID = ID
+        self.title = t
+        self.description = d
+        self.schedule = sch
+
 class user:
 
-    def __init__(self, f, l, u, p):
+    def __init__(self, ID, f, l, u, p):
+        self.ID = ID
         self.firstName = f
         self.lastName = l
         self.username = u
@@ -8,7 +17,8 @@ class user:
 
 class student(user):
 
-    def __init__(self, f, l, m):
+    def __init__(self, ID, f, l, u, p, m):
+        self.ID = ID
         self.firstName = f
         self.lastName = l
         self.username = u
@@ -84,7 +94,7 @@ def main():
     response, noStudent = 1, 1
     f, l, m, CRN = "", "", "", ""
     students = []
-    courses = [course1]
+    courses = []
     print("Welcome to the Student Registration UI \n")
     print("----------------------------------------------\n")
     while response != "0":
