@@ -20,16 +20,16 @@ def print_login_menu():
     print("press 2 to sign up\n")
     print("press 0 to exit\n")
 
-def log_in(users): #function takes in the user's credentials and returns the index to main
+def log_in(): #function takes in the user's credentials and returns the index to main
     username = input("Username: ")
     password = input("Password: ")
-    for student in students:
-        if student.username == username and student.password == password:
+    for user in users:
+        if user.username == username and user.password == password:
             return students.index(student)
     print("Incorrect Credentials")
     return -1 #returns failiure
 
-def sign_up(users): #function to sign up both students and instructors and return the indext to main
+def sign_up(): #function to sign up both students and instructors and return the indext to main
     if not users:                   #checks if the list is empty
         ID = 1000                   #starts IDs at 1000
     else:                           #if users is not empty

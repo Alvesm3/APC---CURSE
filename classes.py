@@ -27,9 +27,9 @@ class course:
         print("from ", self.schedule[0], " to ", self.schedule[1])
     def get_CRN(self):
         return self.CRN
-    def add_student(self, ID)
+    def add_student(self, ID):
         self.studentList.append(ID)
-    def remove_student(self, ID)
+    def remove_student(self, ID):
         self.studentList.remove(ID)
 
 class user:
