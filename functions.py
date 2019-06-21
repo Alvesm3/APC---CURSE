@@ -24,7 +24,7 @@ def log_in(users): #function takes in the user's credentials and returns the ind
     username = input("Username: ")
     password = input("Password: ")
     for student in students:
-        if student.username == username && student.password == password:
+        if student.username == username and student.password == password:
             return students.index(student)
     print("Incorrect Credentials")
     return -1 #returns failiure
