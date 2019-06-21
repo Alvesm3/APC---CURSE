@@ -87,7 +87,7 @@ class student(user):
                 for registeredCourses in courseCRN: #start by checking for timing conflicts
                     for course in courses:
                         if registeredCourses == course.get_CRN():
-                            if (courses[newCourseIndex].schedule[0] >= course.schedule[0] && courses[newCourseIndex].schedule[0] <= course.schedule[1]) || (courses[newCourseIndex].schedule[1] <= course.schedule[1] && courses[newCourseIndex].schedule[0] >= course.schedule[0]):
+                            if (courses[newCourseIndex].schedule[0] >= course.schedule[0] and courses[newCourseIndex].schedule[0] <= course.schedule[1]) or (courses[newCourseIndex].schedule[1] <= course.schedule[1] and courses[newCourseIndex].schedule[0] >= course.schedule[0]):
                                 print("This course does not fit in your schedule and conflicts with: ", course.get_title(), " ", course.get_CRN())
                                 return
                 self.courseCRN.append(CRN) #add the course if there are no conflicts
