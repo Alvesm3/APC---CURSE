@@ -66,12 +66,14 @@ instructors = ["Professor Scott", "Professor Schrute"]
 
 #admin function that will need to get called in main (see main.py line 40 (subject to change))
 def admin_test():
-    admin("admin","12345") #create an admin object where the username is admin and password is 12345
+    #Since there is only one admin, unecessary to create new_admin, good practice though
+    new_admin = admin("admin","12345") #create an admin object where the username is admin and password is 12345
     i = 0 
     while(True):
         username = input("Username: ")
         password = getpass("Password: ") #getpass function allows us to hide the password when typing it in
-        if username == "admin" and password == '12345': #The username and password that that the admin enters must equal the predeifned username and password
+        if username == new_admin.username and password == new_admin.password: #access username and password method from object new_admin
+        #if username == "admin" and password == '12345': The username and password that that the admin enters must equal the predeifned username and password (it is hard coded here)
             print_admin_menu() #print all that an admin can do
             break 
         else: #otherwise, you entered either the username or password wrong
