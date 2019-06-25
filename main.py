@@ -21,21 +21,28 @@ def main():
             print("Can you read?")
     while response != "0": #start of the main loop
 
-        if user[userIndex].get_user_type() == "student": #student section
+        if users[userIndex].get_user_type() == "student": #student section
             while response != "4":
-                functions.print_student_menu(user[userIndex])
+                functions.print_student_menu(users[userIndex])
                 response = input()
                 if response == "1": #add courses
                     CRN = input("Enter the course number\n")
-                    user[userIndex].add_class(CRN, courses)
+                    users[userIndex].add_course(CRN)
                 elif response == "2": #drop courses
                     CRN = input("Enter the course number\n")
-                    user[userIndex].remove_class(CRN, courses)
+                    users[userIndex].remove_course(CRN)
                 elif response == "3": #print schedule
-                    user[userIndex].view_schedule()
-        elif user[userIndex].get_user_type() == "instructor"
+                    users[userIndex].view_schedule()
+        elif users[userIndex].get_user_type() == "instructor":
+            while response != "3":
+                print_instructor_menu(users[userIndex])
+                response = input()
+                if response == "1": #view schedule
+                    users[userIndex].view_schedule()
+                if response == "2":
+                    users[userIndex].view_roster()
             #add instructor funcctions
-        elif user[userIndex].get_user_type() == "admin"
+        elif users[userIndex].get_user_type() == "admin"
             #add admin functions
 
 
