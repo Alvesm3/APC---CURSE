@@ -4,14 +4,21 @@ def print_main_menu():
     print("Press 0 to exit\n")
     print("----------------------------------------------\n")
 
-def print_student_menu(st):
+def print_student_menu(user):
     print("----------------------------------------------\n")
-    print("Welcome ", st.get_firstName(), "!\n")
-    print("Would you like to change your courses?\n")
+    print("Welcome ", user.get_firstName(), "!\n")
     print("Press 1 to add a course\n")
     print("Press 2 to remove a course\n")
     print("Press 3 to view your schedule")
     print("Press 4 to go back\n")
+    print("----------------------------------------------\n")
+
+def print_instructor_menu(user):
+    print("----------------------------------------------\n")
+    print("Welcome ", user.get_firstName(), "!\n")
+    print("Press 1 to view your schedule\n")
+    print("Press 2 to veiw your roster\n")
+    print("Press 3 to go back\n")
     print("----------------------------------------------\n")
 
 def print_login_menu():
