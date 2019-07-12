@@ -1,8 +1,8 @@
 //explanation of the first test:
-//creates a student and an instructor
+//creates a student (matt)and an instructor (akshar)
 2
 1
-asd
+matt
 asd
 asd
 matt
@@ -11,13 +11,13 @@ password
 4
 2
 2
-asd
+akshar
 asd
 akshar
 password
 password
 3
-//adds a math class and prints it
+//the admin adds a math class and prints all classes, which shows the class registered, akshar is assigned the class
 1
 ghannamr
 password
@@ -30,7 +30,7 @@ math stuff
 mat101
 1
 8
-//student signs up
+//student signs up to the math class and views it in his schedule
 1
 matt
 password
@@ -38,13 +38,13 @@ password
 mat101
 3
 4
-//instructor views roster
+//instructor views roster seeing the student matt in his class
 1
 akshar
 password
 2
 3
-//admin deletes the course
+//admin deletes the course forcing the student and instructor to drop
 1
 ghannamr
 password
@@ -52,4 +52,16 @@ password
 mat101
 y
 8
+//student signs in and prints the empty schedule to confirm
+1
+matt
+password
+3
+4
+//instructor signs in and prints his empty roster
+1
+akshar
+password
+2
+3
 0
