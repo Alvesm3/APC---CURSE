@@ -1,0 +1,65 @@
+//creates a student (matt)and an two instructors (akshar and akshar2)
+2
+1
+matt
+asd
+asd
+matt
+password
+password
+4
+2
+2
+akshar
+asd
+akshar
+password
+password
+3
+2
+2
+akshar2
+asd
+akshar2
+password
+password
+3
+//the admin adds a math class and a physics class and prints all classes, which shows the classes registered, akshar is assigned one and akshar2 the other
+1
+ghannamr
+password
+3
+math
+math stuff
+1
+3
+2
+mat101
+3
+physiscs
+physics stuff
+4
+5
+3
+phy101
+1
+//The admin adds matt to both classes
+6
+1
+mat101
+6
+1
+phy101
+//The admin transfers the physics class from akshar2 to akshar
+5
+phy101
+instructor
+2
+8
+//The instructor akshar logs in and views classes roster
+1
+akshar
+password
+2
+3
+0 
