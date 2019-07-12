@@ -1,4 +1,5 @@
 '''
+Coded by Matthew Alves
 Set up dictionaries 
 *Dictionaries are powerful in that they are mutable, dynamic, and can be nested 
 -> you can even map a list to a key which is what is done in this program
