@@ -1,3 +1,5 @@
+import classes
+
 def print_main_menu():
     print("----------------------------------------------\n")
     print("Press 1 to access a student\n")
@@ -9,8 +11,8 @@ def print_student_menu(user):
     print("Welcome ", user.get_firstName(), "!\n")
     print("Press 1 to add a course\n")
     print("Press 2 to remove a course\n")
-    print("Press 3 to view your schedule")
-    print("Press 4 to go back\n")
+    print("Press 3 to view your schedule\n")
+    print("Press 4 to log out\n")
     print("----------------------------------------------\n")
 
 def print_instructor_menu(user):
@@ -18,8 +20,22 @@ def print_instructor_menu(user):
     print("Welcome ", user.get_firstName(), "!\n")
     print("Press 1 to view your schedule\n")
     print("Press 2 to veiw your roster\n")
-    print("Press 3 to go back\n")
+    print("Press 3 to log out\n")
     print("----------------------------------------------\n")
+
+def print_admin_menu():
+    print("----------------------------------------------\n")
+    print("Welcome Admin!\n")
+    print("Press 1 to view all courses\n")
+    print("Press 2 to view a specific instructors roster\n")
+    print("Press 3 to add a course\n")
+    print("Press 4 to remove a course\n")
+    print("Press 5 to edit course attributes\n")
+    print("Press 6 to force add a student to a course\n")
+    print("Press 7 to force drop a student from a course\n")
+    print("Press 8 to log out")
+    print("----------------------------------------------\n")
+
 
 def print_login_menu():
     print("----------------------------------------------\n")
@@ -27,16 +43,16 @@ def print_login_menu():
     print("press 2 to sign up\n")
     print("press 0 to exit\n")
 
-def log_in(): #function takes in the user's credentials and returns the index to main
+def log_in(users): #function takes in the user's credentials and returns the index to main
     username = input("Username: ")
     password = input("Password: ")
     for user in users:
         if user.username == username and user.password == password:
-            return students.index(student)
+            return users.index(user)
     print("Incorrect Credentials")
     return -1 #returns failiure
 
-def sign_up(): #function to sign up both students and instructors and return the indext to main
+def sign_up(users): #function to sign up both students and instructors and return the indext to main
     if not users:                   #checks if the list is empty
         ID = 1000                   #starts IDs at 1000
     else:                           #if users is not empty
@@ -44,18 +60,18 @@ def sign_up(): #function to sign up both students and instructors and return the
     studentOrInstructor = input("Press 1 for student and 2 for instructor: ")
     fName = input("First Name: ")
     lName = input("Last Name: ")
-    if studentOrInstructor == 1:
+    if studentOrInstructor == '1':
         major = input("major: ")
     username = input("Username: ")
     password1 = input ("Password: ")
     password2 = input("Retype Password: ")
     if password1 == password2:
-        if studentOrInstructor == 1:
+        if studentOrInstructor == '1':
             newUser = classes.student(ID, fName, lName, username, password1, major)
         else:
             newUser = classes.instructor(ID, fName, lName, username, password1)
         users.append(newUser)
-        return (users.len() - 1) #returns the last index
+        return (len(users) - 1) #returns the last index
     else:
         print("The passwords do not match. Please try again.")
     return -1 #returns failiure
