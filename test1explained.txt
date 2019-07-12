@@ -1,0 +1,55 @@
+//explanation of the first test:
+//creates a student and an instructor
+2
+1
+asd
+asd
+asd
+matt
+password
+password
+4
+2
+2
+asd
+asd
+akshar
+password
+password
+3
+//adds a math class and prints it
+1
+ghannamr
+password
+3
+math
+math stuff
+1
+2
+2
+mat101
+1
+8
+//student signs up
+1
+matt
+password
+1
+mat101
+3
+4
+//instructor views roster
+1
+akshar
+password
+2
+3
+//admin deletes the course
+1
+ghannamr
+password
+4
+mat101
+y
+8
+0
