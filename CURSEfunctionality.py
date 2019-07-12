@@ -10,10 +10,14 @@ courses = {CRN : [Description]}
 students = {UID : [Name, Major]}
 instructor = {UID : [Name]}
 Link courses and students
-courses_students = {<CRN : [populate list when a student signs up]>}
+courses_students = {CRN : [populate list when a student signs up]}
 Link courses and instructors
 instructors_roster = {UID : [courses they teach]}
-''' 
+------------------------------------------------------------------------------------------
+The dictionaries below would be modeled with classes and then instantiated with objects.
+I have hardcoded them for now just to show functionality and to be able to test them.
+------------------------------------------------------------------------------------------
+'''
 courses = {123456 : ["Math", 'Description', 25], 234567: ["Enlgish", 'Description', 25] }
 students = {24 : ["Matt Alves", "BSCO"], 25 : ["Elon Musk", "Physics"]}
 print(courses)
