@@ -1,2 +1,2 @@
 # CURSE
-Applied Programming Concepts CURSE
+CURSE is a student registration system
