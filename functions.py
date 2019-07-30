@@ -1,4 +1,6 @@
-import classes
+from classes import *
+from database import *
+from getpass import getpass
 
 def print_main_menu():
     print("----------------------------------------------\n")
@@ -63,8 +65,8 @@ def sign_up(users): #function to sign up both students and instructors and retur
     if studentOrInstructor == '1':
         major = input("major: ")
     username = input("Username: ")
-    password1 = input ("Password: ")
-    password2 = input("Retype Password: ")
+    password1 = getpass.getpass("Password: ")
+    password2 = getpass.getpass("Retype Password: ")
     if password1 == password2:
         if studentOrInstructor == '1':
             newUser = classes.student(ID, fName, lName, username, password1, major)
