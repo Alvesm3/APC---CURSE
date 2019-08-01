@@ -1,5 +1,5 @@
-from classes import *
-from database import *
+import classes
+import sqlite3
 from getpass import getpass
 
 def print_main_menu():
@@ -35,7 +35,8 @@ def print_admin_menu():
     print("Press 5 to edit course attributes\n")
     print("Press 6 to force add a student to a course\n")
     print("Press 7 to force drop a student from a course\n")
-    print("Press 8 to log out")
+    print("Press 8 to view all students\n")
+    print("Press 9 to log out\n")
     print("----------------------------------------------\n")
 
 
@@ -47,7 +48,7 @@ def print_login_menu():
 
 def log_in(users): #function takes in the user's credentials and returns the index to main
     username = input("Username: ")
-    password = input("Password: ")
+    password = getpass("Password: ")
     for user in users:
         if user.username == username and user.password == password:
             return users.index(user)
@@ -58,20 +59,20 @@ def sign_up(users): #function to sign up both students and instructors and retur
     if not users:                   #checks if the list is empty
         ID = 1000                   #starts IDs at 1000
     else:                           #if users is not empty
-        ID = users[-1].get_ID() + 1 #gets the last ID for a user and adds the next ID
+        ID = users[len(users) - 1].get_ID() + 1 #gets the last ID for a user and adds the next ID
     studentOrInstructor = input("Press 1 for student and 2 for instructor: ")
     fName = input("First Name: ")
     lName = input("Last Name: ")
     if studentOrInstructor == '1':
         major = input("major: ")
     username = input("Username: ")
-    password1 = getpass.getpass("Password: ")
-    password2 = getpass.getpass("Retype Password: ")
+    password1 = getpass ("Password: ")
+    password2 = getpass("Retype Password: ")
     if password1 == password2:
         if studentOrInstructor == '1':
-            newUser = classes.student(ID, fName, lName, username, password1, major)
+            newUser = classes.student(ID, fName, lName, username, password1, major, 'freshman', 'none', 'none')
         else:
-            newUser = classes.instructor(ID, fName, lName, username, password1)
+            newUser = classes.instructor(ID, fName, lName, username, password1, 'none')
         users.append(newUser)
         return (len(users) - 1) #returns the last index
     else:

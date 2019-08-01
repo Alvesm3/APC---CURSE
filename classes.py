@@ -20,29 +20,33 @@ class course:
     --------------------------------------------------------------------------------
     '''
 
-    def __init__(self, CRN, t, d, sch, instID):
+    def __init__(self, CRN, title, department, sch, instID, semester, prereq, enrolled):
         self.CRN = CRN #course CRNs are always made of 6 characters
-        self.title = t
-        self.description = d
+        self.title = title
+        self.department = department
         self.capacity = 25
-        self.schedule = sch #sch has to be an array of size 2 containing start and end of the period (for this version at least)
-        self.studentList = []
-        self.instructorID = instID
+        self.schedule = sch.split("-") #sch has to be an array of size 2 containing start and end of the period (for this version at least)
+        self.studentList = [] if enrolled == 'none' else enrolled.split(" ")
+        for studentID in self.studentList: #turn it all into integer
+            studentID = int(studentID)
+        self.instructorID = int(instID)
+        self.semester = semester
+        self.prerequisites = [] if prereq == 'none' else prereq.split(" ")
     def set_title(self, t):
         self.title = t
-    def set_description(self, d):
-        self.description = d
+    def set_department(self, d):
+        self.department = d
     def set_capacity(self, c):
         self.capacity = c
     def set_schedule(self, start, end):
         self.schedule[0] = start
         self.schedult[1] = end
-    def set_instructor(self,ID):
+    def set_instructorID(self,ID):
         self.instructorID = ID
     def get_title(self):
         return self.title
-    def get_description(self):
-        return self.description
+    def get_department(self):
+        return self.department
     def get_capacity(self):
         return self.capacity
     def get_schedule_start(self):
@@ -57,12 +61,14 @@ class course:
         self.studentList.remove(ID)
     def get_instructorID(self):
         return self.instructorID
+    def get_prereq(self):
+        return self.prerequisites
 
-'''
-Under Development
+
+###Under Development
 ##########
 class schedule:
-    \'\'\'
+    '''
     --------------------------------------------------------------------------------
     Description:
     A class that holds the data for a user's schedule
@@ -84,21 +90,29 @@ class schedule:
     - remove_course function, used to remove a course schedule from the list
     - get_schedule function, used to print the schedule
     --------------------------------------------------------------------------------
-    \'\'\'
+    '''
 
-    def __init__(self):
-        self.courseCRN = []
-        self.courseDays = []
-        self.day =[]
-        self.start = []
-        self.end= []
+    def __init__(self, days, start, end):
+        self.courseDays = days
+        self.startTime = start
+        self.endTime = end
 
-    def get_schedule(self):
-        for CRN in courseCRN:
-            for course in courses:
-                if CRN == course.get_CRN():
+    def print_schedule(self):
+        for day in self.days:
+            print(day + ": from " + self.startTime[self.days.index(day)] + " to " + self.endTime[self.days.index(day)])
+
+    def check_for_conflict(self, otherSchedule):
+        for day in self.days:
+            if day in otherSchedule.days:
+                if self.startTime[self.days.index(day)] > otherSchedule.startTime[self.days.index(day)] and self.startTime[self.days.index(day)] < otherSchedule.endTime[self.days.index(day)]:
+                    return True
+                if self.endtTime[self.days.index(day)] > otherSchedule.startTime[self.days.index(day)] and self.endTime[self.days.index(day)] < otherSchedule.endTime[self.days.index(day)]:
+                    return True
+        return False
+
+
 #########
-'''
+
 
 class user:
     '''
@@ -156,23 +170,25 @@ class admin(user):
 
     def view_all_courses(self, courses):
         for course in courses:
-            print(course.get_title(), ' | Course CRN:', course.get_CRN(), ' | Course Instructor ID:', course.get_instructorID(), '\n---------------\n', course.get_description(), '\n------------------------------\n')
+            print(course.get_title(), ' | Course CRN:', course.get_CRN(), ' | Course Instructor ID:', course.get_instructorID(), '\n---------------\n', course.get_department(), ' | Prereqs: ', course.get_prereq(), '\n------------------------------\n')
 
-    def view_instructor_roster(self, users):
+    def view_instructor_roster(self, users, courses):
         for user in users:
             if user.get_user_type() == 'instructor':
-                print(user.get_firstName, ' ', user.get_lastName, ' | ', user.get_ID)
-        ID = input('Enter the instructor\'s ID to view the roster')
+                print(user.get_firstName(), ' ', user.get_lastName(), ' | ', user.get_ID())
+        ID = int(input('Enter the instructor\'s ID to view the roster: '))
         for user in users:
             if user.get_user_type() == 'instructor' and ID == user.get_ID():
-                user.view_roster()
+                user.view_roster(users, courses)
+                return
+        print("This instructor does not exist \n")
 
     def add_course(self, users, courses):
         t = input("Enter the course's title: ")
         d = input("Enter the course's description: ")
-        start = int(input("Enter the course's start time: "))
-        end = int(input("Enter the course's end time: "))
-        sch = [start, end]
+        start = input("Enter the course's start time: ")
+        end = input("Enter the course's end time: ")
+        sch = start + "-" + end
         instID = int(input("Enter the course's instructor's ID: "))
         CRN = input("Finally, enter a unique 6 character CRN for the course: ")
         for course_ in courses:
@@ -186,7 +202,7 @@ class admin(user):
                 user.courseCRN.append(CRN)
 
 
-    def remove_course(self, users, courses): 
+    def remove_course(self, users, courses):
         CRN = input("Enter the course's CRN: ")
         for course in courses:
             if CRN == course.get_CRN():
@@ -214,14 +230,14 @@ class admin(user):
         CRN = input("Enter the course's CRN: ")
         for course in courses:
             if CRN == course.get_CRN():
-                attribute = input("Enter the attribute to edit (title/description/instructor): ")
+                attribute = input("Enter the attribute to edit (title/department/instructor): ")
                 if attribute == 'title':
                     t = input("enter a new title: ")
                     course.set_title(t)
                     return
-                elif attribute == 'description':
-                    d = input("enter a new description: \n")
-                    course.set_description(d)
+                elif attribute == 'department':
+                    d = input("enter a new department: \n")
+                    course.set_department(d)
                     return
                 elif attribute == 'instructor':
                     ID = int(input("enter an instructor ID:"))
@@ -230,7 +246,8 @@ class admin(user):
                             for user2 in users: #updates the previous instructor by removing the class from his roster
                                 if course.get_instructorID() == user2.get_ID():
                                     user2.courseCRN.remove(course.get_CRN())
-                            course.set_instructorID(ID)
+                            course.set_instructorID(ID) #sets course's instructor ID
+                            users[users.index(user)].courseCRN.append(CRN) #adds course to the instructor's list
                             return
                     print("The instructor does not exist")
                     return
@@ -240,7 +257,7 @@ class admin(user):
         print("The course does not exist")
 
     def add_student(self, users, courses):
-        ID = input("Enter the student's ID: ")
+        ID = int(input("Enter the student's ID: "))
         for user in users:
             if ID == user.get_ID() and user.get_user_type() == 'student':
                 CRN = input("Enter the course's CRN: ")
@@ -258,7 +275,7 @@ class admin(user):
         print("This student does not exist")
 
     def remove_student(self, users, courses):
-        ID = input("Enter the student's ID: ")
+        ID = int(input("Enter the student's ID: "))
         for user in users:
             if ID == user.get_ID() and user.get_user_type() == 'student':
                 CRN = input("Enter the course's CRN: ")
@@ -275,7 +292,11 @@ class admin(user):
                 return
         print("This student does not exist")
 
-
+    def view_all_students(self, users, courses):
+        for user in users:
+            if user.get_user_type() == "student":
+                print("Student ID: ", user.ID, " | ", user.firstName, user.lastName, " |  Student year and major: ", user.major, user.classLevel, "\nCurrent Courses: ", user.courseCRN, "\nPast Courses: ", user.pastCourses, "\nMore Information: ", user.information)
+                print("---------")
 class student(user):
     '''
     --------------------------------------------------------------------------------
@@ -305,14 +326,17 @@ class student(user):
     --------------------------------------------------------------------------------
     '''
 
-    def __init__(self, ID, f, l, u, p, m):
+    def __init__(self, ID, f, l, u, p, m, classlvl, courses, pastcourses, information):
         self.ID = ID
         self.firstName = f
         self.lastName = l
         self.username = u
         self.password = p
         self.major = m
-        self.courseCRN = []
+        self.classLevel = classlvl
+        self.courseCRN = [] if courses == 'none' else courses.split(" ")
+        self.pastCourses = [] if pastcourses == 'none' else pastcourses.split(" ")
+        self.information = information
     def set_major(slef, m):
         self.majorc = m
     def get_major(self):
@@ -363,11 +387,15 @@ class student(user):
         print("\n")
 
     def view_schedule(self, courses): #very primitive function, will be updated soon to print a table
+        numberOfCourses = 0
         for CRN in self.courseCRN:
             for course in courses:
                 if CRN == course.get_CRN():
                     print(course.get_CRN(), ", ", course.get_title(), ": ")
                     course.print_schedule()
+                    numberOfCourses +=1
+        if numberOfCourses == 0:
+            print("You don't have access to any classes")
         return
 
 class instructor(user):
@@ -396,23 +424,26 @@ class instructor(user):
     --------------------------------------------------------------------------------
     '''
 
-    def __init__(self, ID, f, l, u, p):
+    def __init__(self, ID, f, l, u, p, courses):
         self.ID = ID
         self.firstName = f
         self.lastName = l
         self.username = u
         self.password = p
-        self.courseCRN = []
+        self.courseCRN = [] if courses == 'none' else courses.split(" ")
     def get_user_type(self): # SHOULD ADD TO ALL USER TYPES TO HELP MAIN DIFFERENTIATE
         return "instructor"
 
     #  def print_courses(self)
 
     def view_schedule(self, courses): #very primitive function, will be updated soon to print a table
-        for CRN in courseCRN:
-            for course in courses:
-                if CRN == course.get_CRN():
-                    print(course.get_title(), " ", course.print_schedule(), "\n")
+        if not self.courseCRN:
+            print("You have no access to any courses.")
+        else:
+            for CRN in self.courseCRN:
+                for course in courses:
+                    if CRN == course.get_CRN():
+                        print(course.get_title(), " ", course.print_schedule(), "\n")
         return
 
     def view_roster(self, users, courses):
