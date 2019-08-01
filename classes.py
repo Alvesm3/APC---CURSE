@@ -344,6 +344,10 @@ class student(user):
     def get_user_type(self): # SHOULD ADD TO ALL USER TYPES TO HELP MAIN DIFFERENTIATE
         return "student"
 
+    def view_all_courses(self, courses):
+        for course in courses:
+            print(course.get_title(), ' | Course CRN:', course.get_CRN(), ' | Course Instructor ID:', course.get_instructorID(), '\n---------------\n', course.get_department(), ' | Prereqs: ', course.get_prereq(), '\n------------------------------\n')
+
     def add_course(self, CRN, courses):
         if len(CRN) > 6 or len(CRN) < 6 :
             print("This course number is invalid \n")
@@ -351,18 +355,22 @@ class student(user):
             if CRN in self.courseCRN:
                 print(CRN, " is already registered for \n")
             else:
+                foundCourse = 0
                 for course in courses:
                     if CRN == course.get_CRN():
-                        newCourseIndex = courses.index(course) #place the new course under this variable to access in the next part
-                for registeredCourses in self.courseCRN: #start by checking for timing conflicts
-                    for course in courses:
-                        if registeredCourses == course.get_CRN():
-                            if (courses[newCourseIndex].schedule[0] >= course.schedule[0] and courses[newCourseIndex].schedule[0] <= course.schedule[1]) or (courses[newCourseIndex].schedule[1] <= course.schedule[1] and courses[newCourseIndex].schedule[0] >= course.schedule[0]):
-                                print("This course does not fit in your schedule and conflicts with: ", course.get_title(), " ", course.get_CRN())
-                                return
-                self.courseCRN.append(CRN) #add the course if there are no conflicts
-                courses[newCourseIndex].add_student(self.ID) #updates the course with a new student
-                print(CRN, " has been added to ", self.firstName, " ", self.lastName, "'s list of courses \n")
+                        foundCourse += 1
+                        for registeredCRN in self.courseCRN: #start by checking for timing conflicts
+                            for registeredCourse in courses:
+                                if registeredCourse.CRN == registeredCRN:
+                                    if (course.schedule[0] > registeredCourse.schedule[0] and course.schedule[0] < registeredCourse.schedule[1]) or (course.schedule[1] < registeredCourse.schedule[1] and course.schedule[0] > registeredCourse.schedule[0]):
+                                        print("This course does not fit in your schedule and conflicts with: ", registeredCourse.get_title(), " ", course.get_CRN())
+                                        return
+                        self.courseCRN.append(CRN) #add the course if there are no conflicts
+                        course.add_student(self.ID) #updates the course with a new student
+                if foundCourse == 1:
+                    print(CRN, " has been added to ", self.firstName, " ", self.lastName, "'s list of courses \n")
+                else:
+                    print(CRN, "does not exist in the available courses for this semester")
                 #note: course capacity is not taken into consideration for the first version
 
     def remove_course(self, CRN, courses):
@@ -373,7 +381,7 @@ class student(user):
                 self.courseCRN.remove(CRN) #removes class from student's list
                 for course in courses:
                     if CRN == course.get_CRN(): #update course roster
-                        course.remove(self.ID)
+                        course.remove_student(self.ID)
                 print(CRN, " has been dropped \n")
             else:
                 print(CRN, " is not registered for \n")

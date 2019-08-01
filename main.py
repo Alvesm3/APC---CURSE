@@ -62,6 +62,7 @@ def main():
                         functions.print_student_menu(users[userIndex])
                         response = input()
                         if response == "1": #add courses
+                            users[userIndex].view_all_courses(courses)
                             CRN = input("Enter the course number\n")
                             users[userIndex].add_course(CRN, courses)
                         elif response == "2": #drop courses
